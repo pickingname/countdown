@@ -1,7 +1,48 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import NumberFlow, { NumberFlowGroup } from "@number-flow/react";
 import { Roller } from "@fecapark/number-rolling";
+
+interface TimeBoxProps {
+  value: number;
+  unit: string;
+  useRoller?: boolean;
+}
+
+const TimeBox = ({ value, unit, useRoller = true }: TimeBoxProps) => {
+  const formatUnit = (value: number, unit: string) => {
+    return `${unit}${value === 1 ? "" : "s"}`;
+  };
+
+  return (
+    <div className="flex items-center gap-2 mx-2">
+      <div className="w-[80px] h-[80px] bg-neutral-800 rounded-lg flex items-center justify-center">
+        {useRoller ? (
+          <Roller
+            value={value}
+            align="center"
+            fontSize={48}
+            rollDuration={0.6}
+            shiftDuration={0.45}
+            staggering={false}
+            diff={false}
+            rollWay="down"
+          />
+        ) : (
+          <NumberFlow
+            className="text-5xl"
+            trend={-1}
+            value={value}
+            digits={{ 1: { max: 5 } }}
+            format={{ minimumIntegerDigits: 2 }}
+          />
+        )}
+      </div>
+      <span className="text-xl">{formatUnit(value, unit)}</span>
+    </div>
+  );
+};
 
 export default function CountdownTitle() {
   const [timeLeft, setTimeLeft] = useState({
@@ -12,7 +53,8 @@ export default function CountdownTitle() {
   });
 
   useEffect(() => {
-    const targetDate = new Date("2025-02-13T00:00:00");
+    // Create target date at 16:30 GMT+8
+    const targetDate = new Date("2025-02-13T08:30:00Z");
 
     const calculateTimeLeft = () => {
       const now = new Date();
@@ -34,62 +76,14 @@ export default function CountdownTitle() {
     return () => clearInterval(timer);
   }, []);
 
-  const formatUnit = (value: number, unit: string) => {
-    return `${unit}${value === 1 ? "" : "s"}`;
-  };
-
   return (
-    <div className="flex flex-col items-center justify-center gap-4">
-      <div className="flex items-center gap-2 text-2xl">
-        <Roller
-          value={timeLeft.days}
-          suffix={` ${formatUnit(timeLeft.days, "Day")}`}
-          suffixPosition="back"
-          align="center"
-          fontSize={48}
-          rollDuration={0.6}
-          shiftDuration={0.45}
-          staggering={false}
-          diff={false}
-          rollWay="down"
-        />
-        <Roller
-          value={timeLeft.hours}
-          suffix={` ${formatUnit(timeLeft.hours, "Hour")}`}
-          suffixPosition="back"
-          align="center"
-          fontSize={48}
-          rollDuration={0.6}
-          shiftDuration={0.45}
-          staggering={false}
-          diff={false}
-          rollWay="down"
-        />
-        <Roller
-          value={timeLeft.minutes}
-          suffix={` ${formatUnit(timeLeft.minutes, "Minute")}`}
-          suffixPosition="back"
-          align="center"
-          fontSize={48}
-          rollDuration={0.6}
-          shiftDuration={0.45}
-          staggering={false}
-          diff={false}
-          rollWay="down"
-        />
-        <Roller
-          value={timeLeft.seconds}
-          suffix={` ${formatUnit(timeLeft.seconds, "Second")}`}
-          suffixPosition="back"
-          align="center"
-          fontSize={48}
-          rollDuration={0.6}
-          shiftDuration={0.45}
-          staggering={true}
-          diff={true}
-          rollWay="up"
-        />
+    <NumberFlowGroup>
+      <div className="flex items-center justify-center">
+        <TimeBox value={timeLeft.days} unit="Day" />
+        <TimeBox value={timeLeft.hours} unit="Hour" />
+        <TimeBox value={timeLeft.minutes} unit="Minute" />
+        <TimeBox value={timeLeft.seconds} unit="Second" useRoller={false} />
       </div>
-    </div>
+    </NumberFlowGroup>
   );
 }
