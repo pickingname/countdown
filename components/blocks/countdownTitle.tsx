@@ -54,7 +54,7 @@ export default function CountdownTitle() {
 
   useEffect(() => {
     // Create target date at 16:30 GMT+8
-    const targetDate = new Date("2025-02-13T08:30:00Z");
+    const targetDate = new Date("2025-02-20T08:30:00Z");
 
     const calculateTimeLeft = () => {
       const now = new Date();
