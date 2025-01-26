@@ -10,7 +10,7 @@ export default function Home() {
           <CntDwnT />
           <p className="text-center pt-3 text-3xl">until school ends</p>
         </div>
-        <div className="bg-neutral-800 p-5 mt-10 rounded">
+        <div className="bg-neutral-800 p-5 mt-10 rounded relative">
           <div className="pt-3">
             <ToM3 />
           </div>
