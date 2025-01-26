@@ -27,7 +27,11 @@ export default function ToM3() {
   return (
     <div className="flex flex-col gap-2 items-center">
       <Progress value={percentage} className="h-3" />
-      <p className="text-sm">{percentage.toFixed(6)}%</p>
+      <div className="flex justify-between text-sm w-full">
+        <p>M1</p>
+        <p>{percentage.toFixed(6)}%</p>
+        <p>M3</p>
+      </div>
     </div>
   );
 }

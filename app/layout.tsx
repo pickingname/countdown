@@ -19,7 +19,7 @@ export default function RootLayout({
       <body className={`${currentFont.className} grid-background`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
