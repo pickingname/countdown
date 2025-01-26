@@ -1,4 +1,5 @@
 import CntDwnT from "@/components/blocks/countdownTitle";
+import { Evnt } from "@/components/blocks/eventTable";
 import M3Shalf from "@/components/blocks/m3Shalf";
 import ToM3 from "@/components/blocks/tom3";
 import TotM3 from "@/components/blocks/totm3";
@@ -32,6 +33,13 @@ export default function Home() {
           <LiveBadge text="M3, Term 2 progress" />
           <div className="pt-2">
             <M3Shalf />
+          </div>
+        </div>
+
+        <div className="bg-neutral-800 p-5 mt-10 rounded relative border-neutral-700 border">
+          <p>Events table</p>
+          <div>
+            <Evnt />
           </div>
         </div>
       </div>
