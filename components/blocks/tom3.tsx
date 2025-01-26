@@ -8,7 +8,7 @@ export default function ToM3() {
 
   useEffect(() => {
     const startDate = new Date("2022-05-25").getTime();
-    const endDate = new Date("2025-02-13T08:30:00Z").getTime();
+    const endDate = new Date("2025-02-20T08:30:00Z").getTime();
     const totalDuration = endDate - startDate;
 
     const calculateProgress = () => {
@@ -18,7 +18,7 @@ export default function ToM3() {
       setPercentage(Math.min(Math.max(progress, 0), 100));
     };
 
-    const timer = setInterval(calculateProgress, 1000);
+    const timer = setInterval(calculateProgress, 5000);
     calculateProgress();
 
     return () => clearInterval(timer);
@@ -26,10 +26,8 @@ export default function ToM3() {
 
   return (
     <div className="flex flex-col gap-2 items-center">
-      <Progress value={percentage} className="w-[80%] h-3" />
-      <span className="text-sm">
-        {percentage.toFixed(7)}% calculated from the start of M1 to M3
-      </span>
+      <Progress value={percentage} className="h-3" />
+      <p className="text-sm">{percentage.toFixed(6)}%</p>
     </div>
   );
 }
