@@ -49,7 +49,7 @@ const getTimeLeft = (eventDate: string) => {
 };
 
 export function Evnt() {
-  const [time, setTime] = useState(new Date());
+  const [, setTime] = useState(new Date());
 
   useEffect(() => {
     const timer = setInterval(() => {
