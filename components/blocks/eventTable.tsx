@@ -45,7 +45,7 @@ const getTimeLeft = (eventDate: string) => {
   const dayText = days === 1 ? "day" : "days";
   const hourText = hours === 1 ? "hour" : "hours";
 
-  return `${days} ${dayText} ${hours} ${hourText}`;
+  return `${days} ${dayText}, ${hours} ${hourText}`;
 };
 
 export function Evnt() {
