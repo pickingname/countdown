@@ -32,8 +32,8 @@ const evList = [
 export function Evnt() {
   return (
     <Table>
-      <TableCaption>
-        Source:{" "}
+      <TableCaption className="text-balance">
+        Only important events are shown. Source:{" "}
         <Link
           href="https://www.ps.ac.th/psth/?page_id=13935"
           target="_blank"
@@ -45,7 +45,7 @@ export function Evnt() {
       <TableHeader>
         <TableRow>
           <TableHead className="w-[150px]">Date</TableHead>
-          <TableHead className="">Important Events</TableHead>
+          <TableHead className="">Event</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
