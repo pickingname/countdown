@@ -79,12 +79,20 @@ export default function CountdownTitle() {
   return (
     <div>
       <NumberFlowGroup>
-        <div className="flex flex-wrap items-center justify-center px-4 md:px-0">
-          <div className="flex flex-wrap justify-center gap-6 w-full md:w-auto md:flex-nowrap">
-            <TimeBox value={timeLeft.days} unit="Day" />
-            <TimeBox value={timeLeft.hours} unit="Hour" />
-            <TimeBox value={timeLeft.minutes} unit="Minute" />
-            <TimeBox value={timeLeft.seconds} unit="Second" useRoller={false} />
+        <div className="flex items-center justify-center md:px-0">
+          <div className="flex flex-col md:flex-row justify-center gap-6 w-full md:w-auto">
+            <div className="flex justify-center gap-6">
+              <TimeBox value={timeLeft.days} unit="Day" />
+              <TimeBox value={timeLeft.hours} unit="Hour" />
+            </div>
+            <div className="flex justify-center gap-6">
+              <TimeBox value={timeLeft.minutes} unit="Minute" />
+              <TimeBox
+                value={timeLeft.seconds}
+                unit="Second"
+                useRoller={false}
+              />
+            </div>
           </div>
         </div>
       </NumberFlowGroup>
