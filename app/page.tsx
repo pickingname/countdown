@@ -5,7 +5,7 @@ import TotM3 from "@/components/blocks/totm3";
 
 export default function Home() {
   return (
-    <main className="max-w-3xl mx-auto flex flex-col px-3 pt-10">
+    <main className="max-w-3xl mx-auto flex flex-col px-3">
       <div className="">
         <div className="p-5 mt-10 rounded">
           <p className="text-center text-3xl pb-3">you have approximately</p>
