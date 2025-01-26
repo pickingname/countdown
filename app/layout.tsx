@@ -16,9 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${currentFont.className} grid-background min-w-[220px]`}
-      >
+      <body className={`${currentFont.className} grid-background`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
