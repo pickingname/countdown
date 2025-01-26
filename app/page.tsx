@@ -37,7 +37,7 @@ export default function Home() {
         </div>
 
         <div className="bg-neutral-800 p-5 mt-10 rounded relative border-neutral-700 border">
-          <p>Events table</p>
+          <LiveBadge text="Events Table" />
           <div>
             <Evnt />
           </div>

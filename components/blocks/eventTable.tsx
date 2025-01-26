@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Table,
   TableBody,
@@ -9,6 +11,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 
 const evList = [
   {
@@ -24,12 +27,37 @@ const evList = [
     evDesc: "New year party",
   },
   {
-    evName: "17-21 Feb 2025",
+    evName: "17 Feb 2025",
     evDesc: "M3 Final exam",
   },
 ];
 
+const getTimeLeft = (eventDate: string) => {
+  const now = new Date();
+  const event = new Date(eventDate);
+  const diff = event.getTime() - now.getTime();
+
+  if (diff <= 0) return "Passed";
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+  const dayText = days === 1 ? "day" : "days";
+  const hourText = hours === 1 ? "hour" : "hours";
+
+  return `${days} ${dayText} ${hours} ${hourText}`;
+};
+
 export function Evnt() {
+  const [time, setTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTime(new Date());
+    }, 60000); // 60000ms = 1 minute
+
+    return () => clearInterval(timer);
+  }, []);
   return (
     <Table>
       <TableCaption className="text-balance">
@@ -46,6 +74,7 @@ export function Evnt() {
         <TableRow>
           <TableHead className="w-[150px]">Date</TableHead>
           <TableHead className="">Event</TableHead>
+          <TableHead className="text-right">TTL</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -53,6 +82,9 @@ export function Evnt() {
           <TableRow key={evName.evName}>
             <TableCell className="font-medium">{evName.evName}</TableCell>
             <TableCell className="">{evName.evDesc}</TableCell>
+            <TableCell className="text-right">
+              {getTimeLeft(evName.evName)}
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>
