@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <main className="max-w-3xl mx-auto flex flex-col px-3 pt-3 pb-8">
       <div className="">
-        <div className="p-5 mt- rounded">
+        <div className="p-5 rounded">
           <p className="text-center text-3xl pb-3">you have approximately</p>
           <CntDwnT />
           <p className="text-center pt-3 text-3xl">until you finishes M3</p>
