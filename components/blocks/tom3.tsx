@@ -4,7 +4,8 @@ import { Progress } from "../ui/progress";
 import { useState, useEffect } from "react";
 
 export default function ToM3() {
-  const [percentage, setPercentage] = useState(0);
+  const [realPercentage, setRealPercentage] = useState(0);
+  const [displayPercentage, setDisplayPercentage] = useState(0);
 
   useEffect(() => {
     const startDate = new Date("2022-05-25").getTime();
@@ -15,7 +16,7 @@ export default function ToM3() {
       const now = new Date().getTime();
       const elapsed = now - startDate;
       const progress = (elapsed / totalDuration) * 100;
-      setPercentage(Math.min(Math.max(progress, 0), 100));
+      setRealPercentage(Math.min(Math.max(progress, 0), 100));
     };
 
     const timer = setInterval(calculateProgress, 5000);
@@ -24,12 +25,20 @@ export default function ToM3() {
     return () => clearInterval(timer);
   }, []);
 
+  useEffect(() => {
+    const animationTimer = setTimeout(() => {
+      setDisplayPercentage(realPercentage);
+    }, 100);
+
+    return () => clearTimeout(animationTimer);
+  }, [realPercentage]);
+
   return (
     <div className="flex flex-col gap-2 items-center">
-      <Progress value={percentage} className="h-3" />
+      <Progress value={displayPercentage} className="h-3" />
       <div className="flex justify-between text-sm w-full">
         <p>M1</p>
-        <p>{percentage.toFixed(2)}%</p>
+        <p>{displayPercentage.toFixed(2)}%</p>
         <p>M3</p>
       </div>
     </div>
