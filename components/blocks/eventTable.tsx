@@ -17,7 +17,7 @@ import { Input } from "../ui/input";
 const evList = [
   {
     evName: "28 Oct 2024",
-    evDesc: "M2 2nd term start",
+    evDesc: "M3 2nd term start",
   },
   {
     evName: "29 Jan 2025",
