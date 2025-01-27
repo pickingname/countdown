@@ -71,11 +71,6 @@ export function Evnt() {
   const [, setTime] = useState(new Date());
   const [searchText, setSearchText] = useState("");
 
-  // Filter events based on search text
-  const filteredEvents = evList.filter((event) =>
-    event.evDesc.toLowerCase().includes(searchText.toLowerCase())
-  );
-
   useEffect(() => {
     const timer = setInterval(() => {
       setTime(new Date());
@@ -83,6 +78,7 @@ export function Evnt() {
 
     return () => clearInterval(timer);
   }, []);
+
   return (
     <main>
       <div>
@@ -97,7 +93,7 @@ export function Evnt() {
       </div>
       <Table>
         <TableCaption className="text-balance">
-          Only important events are shown. Source:{" "}
+          Several important events are shown | Source:{" "}
           <Link
             href="https://www.ps.ac.th/psth/?page_id=13935"
             target="_blank"
@@ -114,15 +110,25 @@ export function Evnt() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {filteredEvents.map((evName) => (
-            <TableRow key={evName.evName}>
-              <TableCell className="font-medium">{evName.evName}</TableCell>
-              <TableCell className="">{evName.evDesc}</TableCell>
-              <TableCell className="text-right">
-                {getTimeLeft(evName.evName)}
-              </TableCell>
-            </TableRow>
-          ))}
+          {evList.map((evName) => {
+            const isVisible = evName.evDesc
+              .toLowerCase()
+              .includes(searchText.toLowerCase());
+            return (
+              <TableRow
+                key={evName.evName}
+                className={`transition-opacity duration-200 ease-in-out ${
+                  isVisible ? "opacity-100" : "opacity-20 h-0 overflow-hidden"
+                }`}
+              >
+                <TableCell className="font-medium">{evName.evName}</TableCell>
+                <TableCell className="">{evName.evDesc}</TableCell>
+                <TableCell className="text-right">
+                  {getTimeLeft(evName.evName)}
+                </TableCell>
+              </TableRow>
+            );
+          })}
         </TableBody>
         <TableFooter></TableFooter>
       </Table>
