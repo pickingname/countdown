@@ -28,8 +28,24 @@ const evList = [
     evDesc: "New year party",
   },
   {
+    evName: "9 Feb 2025",
+    evDesc: "M1/M4 Pre exam",
+  },
+  {
     evName: "17 Feb 2025",
     evDesc: "M3 Final exam",
+  },
+  {
+    evName: "15 Mar 2025",
+    evDesc: "M1/M4 Entering exam",
+  },
+  {
+    evName: "21 April 2025",
+    evDesc: "Supplement week",
+  },
+  {
+    evName: "--",
+    evDesc: "2568 AC Start",
   },
 ];
 
@@ -42,6 +58,8 @@ const getTimeLeft = (eventDate: string) => {
 
   const days = Math.floor(diff / (1000 * 60 * 60 * 24));
   const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+  if (isNaN(days) || isNaN(hours)) return "Unknown";
 
   const dayText = days === 1 ? "day" : "days";
   const hourText = hours === 1 ? "hour" : "hours";
