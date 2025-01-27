@@ -71,7 +71,7 @@ export function Evnt() {
         <div className="pt-3">
           <Input
             placeholder="Find events"
-            className="h-8 bg-neutral-900"
+            className="h-8 bg-neutral-700 shadow-lg shadow-black/20"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
