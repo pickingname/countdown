@@ -34,7 +34,7 @@ const TimeBox = ({ value, unit, useRoller = true }: TimeBoxProps) => {
             className="text-5xl"
             trend={-1}
             value={value}
-            digits={{ 1: { max: 2 } }}
+            digits={{ 1: { max: 5 } }}
             format={{ minimumIntegerDigits: 2 }}
           />
         )}
