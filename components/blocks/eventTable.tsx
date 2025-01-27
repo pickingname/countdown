@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/table";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { Input } from "../ui/input";
 
 const evList = [
   {
@@ -50,45 +51,63 @@ const getTimeLeft = (eventDate: string) => {
 
 export function Evnt() {
   const [, setTime] = useState(new Date());
+  const [searchText, setSearchText] = useState("");
+
+  // Filter events based on search text
+  const filteredEvents = evList.filter((event) =>
+    event.evDesc.toLowerCase().includes(searchText.toLowerCase())
+  );
 
   useEffect(() => {
     const timer = setInterval(() => {
       setTime(new Date());
-    }, 60000); // 60000ms = 1 minute
+    }, 60000);
 
     return () => clearInterval(timer);
   }, []);
   return (
-    <Table>
-      <TableCaption className="text-balance">
-        Only important events are shown. Source:{" "}
-        <Link
-          href="https://www.ps.ac.th/psth/?page_id=13935"
-          target="_blank"
-          className="underline hover:text-blue-500 transition-colors duration-150 ease-in-out"
-        >
-          https://www.ps.ac.th/psth/?page_id=13935
-        </Link>
-      </TableCaption>
-      <TableHeader>
-        <TableRow>
-          <TableHead className="w-[150px]">Date</TableHead>
-          <TableHead className="">Event</TableHead>
-          <TableHead className="text-right">TTL</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {evList.map((evName) => (
-          <TableRow key={evName.evName}>
-            <TableCell className="font-medium">{evName.evName}</TableCell>
-            <TableCell className="">{evName.evDesc}</TableCell>
-            <TableCell className="text-right">
-              {getTimeLeft(evName.evName)}
-            </TableCell>
+    <main>
+      <div>
+        <div className="pt-3">
+          <Input
+            placeholder="Find events"
+            className="h-8 bg-neutral-900"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+          />
+        </div>
+      </div>
+      <Table>
+        <TableCaption className="text-balance">
+          Only important events are shown. Source:{" "}
+          <Link
+            href="https://www.ps.ac.th/psth/?page_id=13935"
+            target="_blank"
+            className="underline hover:text-blue-500 transition-colors duration-150 ease-in-out"
+          >
+            https://www.ps.ac.th/psth/?page_id=13935
+          </Link>
+        </TableCaption>
+        <TableHeader>
+          <TableRow>
+            <TableHead className="w-[150px]">Date</TableHead>
+            <TableHead className="">Event</TableHead>
+            <TableHead className="text-right">TTL</TableHead>
           </TableRow>
-        ))}
-      </TableBody>
-      <TableFooter></TableFooter>
-    </Table>
+        </TableHeader>
+        <TableBody>
+          {filteredEvents.map((evName) => (
+            <TableRow key={evName.evName}>
+              <TableCell className="font-medium">{evName.evName}</TableCell>
+              <TableCell className="">{evName.evDesc}</TableCell>
+              <TableCell className="text-right">
+                {getTimeLeft(evName.evName)}
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+        <TableFooter></TableFooter>
+      </Table>
+    </main>
   );
 }
