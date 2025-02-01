@@ -2,6 +2,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/react";
 
 const currentFont = Outfit({ subsets: ["latin"] });
 export const metadata: Metadata = {
@@ -25,6 +26,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <Analytics />
           {children}
         </ThemeProvider>
       </body>
