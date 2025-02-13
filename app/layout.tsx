@@ -4,6 +4,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
+import Nav from "@/components/ui/nav";
 
 const currentFont = Outfit({ subsets: ["latin"] });
 export const metadata: Metadata = {
@@ -19,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${currentFont.className} grid-background min-w-[385px]`}
+        className={`${currentFont.className} grid-background min-w-[385px] px-3`}
       >
         <ThemeProvider
           attribute="class"
@@ -29,6 +30,7 @@ export default function RootLayout({
         >
           <SpeedInsights />
           <Analytics />
+          <Nav />
           {children}
         </ThemeProvider>
       </body>
