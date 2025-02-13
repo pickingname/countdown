@@ -29,11 +29,9 @@ export default function Navbar() {
       }
     };
 
-    // Initial checks
     handleResize();
     handleScroll();
 
-    // Event listeners
     window.addEventListener("resize", handleResize);
     window.addEventListener("scroll", handleScroll);
 
@@ -73,15 +71,20 @@ export default function Navbar() {
           isMobileScreen ? "hidden" : "flex"
         } items-center space-x-2`}
       >
-        <button className="flex items-center justify-center gap-1 h-8 px-3 text-xs font-medium text-neutral-300 bg-neutral-800 rounded-lg hover:bg-neutral-700">
-          <Instagram size={17} />
-          <span className="leading-none">157 IG</span>
-        </button>
+        <Link
+          href={"https://www.instagram.com/ps.onefiveseven"}
+          target="_blank"
+        >
+          <button className="flex items-center justify-center gap-1 h-8 px-3 text-xs font-medium text-neutral-300 bg-neutral-800 rounded-lg hover:bg-neutral-700">
+            <Instagram size={17} />
+            <span className="leading-none">157 IG</span>
+          </button>
+        </Link>
         <button className="flex items-center justify-center h-8 px-3 text-xs font-medium text-neutral-300 bg-neutral-800 rounded-lg hover:bg-neutral-700">
           <span className="leading-none">Countdown</span>
         </button>
         <button className="flex items-center justify-center h-8 px-3 text-xs font-medium text-neutral-900 bg-yellow-200 rounded-lg hover:bg-yellow-300">
-          <span className="leading-none">Canvas</span>
+          <span className="leading-none">Board</span>
         </button>
       </div>
 
@@ -109,14 +112,19 @@ export default function Navbar() {
               Where to go?
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <Link href={""}>
+            <Link
+              href={
+                "https://www.instagram.com/ps.onefiveseven?igsh=aDFjbGk4YnM4bHZz"
+              }
+              target="_blank"
+            >
               <DropdownMenuItem>157 IG</DropdownMenuItem>
             </Link>
             <Link href={""}>
               <DropdownMenuItem>Countdown</DropdownMenuItem>
             </Link>
             <Link href={""}>
-              <DropdownMenuItem>Canvas</DropdownMenuItem>
+              <DropdownMenuItem>Board</DropdownMenuItem>
             </Link>
           </DropdownMenuContent>
         </DropdownMenu>
