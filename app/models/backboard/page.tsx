@@ -28,13 +28,15 @@ export default function Page() {
             <span className="underline">
               Zoom in and out using the scroll wheel
             </span>{" "}
-            on your mouse. Enjoy exploring!
+            on your mouse.
           </p>
           <p className="pl-4 text-pretty pt-2 text-neutral-300 pb-2">
             On a mobile device,{" "}
             <span className="underline">use one of your finger to rotate</span>{" "}
-            the model by dragging it, and{" "}
-            <span className="underline">pinch to zoom</span> in and out.{" "}
+            the model by dragging it,{" "}
+            <span className="underline">pinch to zoom</span> in and out, and{" "}
+            <span className="underline">pinch and drag to pan</span>. Happy
+            exploring!
           </p>
           <Button onClick={scrollToModel}>Click here to jump to model</Button>
         </div>
