@@ -20,7 +20,7 @@ export default function Navbar() {
   useEffect(() => {
     const handleResize = () => {
       setIsSmallScreen(window.innerWidth < 840);
-      setIsMobileScreen(window.innerWidth < 500);
+      setIsMobileScreen(window.innerWidth < 590);
     };
 
     const handleScroll = () => {
@@ -84,9 +84,16 @@ export default function Navbar() {
             <span className="leading-none">157 IG</span>
           </button>
         </Link>
-        <button className="flex items-center justify-center h-8 px-3 text-xs font-medium text-neutral-300 bg-neutral-800 rounded-lg hover:bg-neutral-700">
-          <span className="leading-none">Countdown</span>
-        </button>
+        <Link href={"/"}>
+          <button className="flex items-center justify-center h-8 px-3 text-xs font-medium text-neutral-300 bg-neutral-800 rounded-lg hover:bg-neutral-700">
+            <span className="leading-none">Countdown</span>
+          </button>
+        </Link>
+        <Link href={"/models"}>
+          <button className="flex items-center justify-center h-8 px-3 text-xs font-medium text-neutral-300 bg-neutral-800 rounded-lg hover:bg-neutral-700">
+            <span className="leading-none">3D Models</span>
+          </button>
+        </Link>
         <button className="flex items-center justify-center h-8 px-3 text-xs font-medium text-neutral-900 bg-yellow-200 rounded-lg hover:bg-yellow-300">
           <span className="leading-none">Board</span>
         </button>
@@ -124,8 +131,11 @@ export default function Navbar() {
             >
               <DropdownMenuItem>157 IG</DropdownMenuItem>
             </Link>
-            <Link href={""}>
+            <Link href={"/"}>
               <DropdownMenuItem>Countdown</DropdownMenuItem>
+            </Link>
+            <Link href={"/models"}>
+              <DropdownMenuItem>3D Models</DropdownMenuItem>
             </Link>
             <Link href={""}>
               <DropdownMenuItem>Board</DropdownMenuItem>
