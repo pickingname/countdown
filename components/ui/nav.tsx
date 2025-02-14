@@ -62,7 +62,9 @@ export default function Navbar() {
         <span className="text-lg flex items-center leading-none mb-0.5">
           <span className="mr-2 text-yellow-400">🔥</span> 157
         </span>
-        <span className="text-sm font-medium leading-none">Countdown</span>
+        <span className="text-sm font-medium leading-none pb-[1px]">
+          Countdown
+        </span>
       </div>
 
       {/* desktop UI */}
