@@ -25,14 +25,20 @@ function LoadingSpinner() {
   );
 }
 
-function Model() {
-  const { scene } = useGLTF(
-    "https://3jcyw639he.ufs.sh/f/Ij2Ry4WvTSFuwdHlVukpaYeEwXRBfPWgicUkKAQOqdTyt3V4"
-  );
+interface ModelProps {
+  url: string;
+}
+
+function Model({ url }: ModelProps) {
+  const { scene } = useGLTF(url);
   return <primitive object={scene} />;
 }
 
-export default function Backboard() {
+interface BackboardProps {
+  modelUrl: string;
+}
+
+export default function Backboard({ modelUrl }: BackboardProps) {
   const { ErrorBoundary, didCatch, error } = useErrorBoundary();
 
   if (didCatch) {
@@ -55,7 +61,7 @@ export default function Backboard() {
           className="rounded-md border border-neutral-700"
         >
           <Suspense fallback={<LoadingSpinner />}>
-            <Model />
+            <Model url={modelUrl} />
             <Environment preset="warehouse" />
             <OrbitControls />
           </Suspense>

@@ -16,7 +16,7 @@ export default function Page() {
       <div className="">
         <div className="bg-neutral-800 border border-neutral-700 mt-5 p-5 rounded-md">
           <p className="text-xl pb-2 text-center">
-            Welcome to the backboard model
+            Welcome to the Right frontboard model
           </p>
           <p className="text-xl">How to control?</p>
           <p className="pl-4 text-pretty text-neutral-300">
@@ -41,7 +41,7 @@ export default function Page() {
           <Button onClick={scrollToModel}>Click here to jump to model</Button>
         </div>
         <div ref={modelRef}>
-          <Backboard modelUrl="https://3jcyw639he.ufs.sh/f/Ij2Ry4WvTSFuwdHlVukpaYeEwXRBfPWgicUkKAQOqdTyt3V4" />
+          <Backboard modelUrl="https://3jcyw639he.ufs.sh/f/Ij2Ry4WvTSFuZCrDu3I4foOyQCzUdKNkt7HJsRI8hecx9Xag" />
         </div>
       </div>
     </main>
