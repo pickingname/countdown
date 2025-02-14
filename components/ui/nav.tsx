@@ -63,7 +63,7 @@ export default function Navbar() {
           <span className="mr-2 text-yellow-400">🔥</span> 157
         </span>
         <span className="text-sm font-medium leading-none pb-[1px]">
-          Countdown
+          Archival
         </span>
       </div>
 
