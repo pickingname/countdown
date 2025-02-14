@@ -11,7 +11,7 @@ const ELEMENTS = [
       {
         id: "2",
         isSelectable: true,
-        name: "frontboard",
+        name: "frontboard (You are here)",
         children: [
           {
             id: "3",
@@ -50,7 +50,7 @@ export default function Page() {
               elements={ELEMENTS}
             >
               <Folder element="models" value="1">
-                <Folder value="2" element="frontboard">
+                <Folder value="2" element="frontboard (You are here)">
                   <File value="3">
                     <Link href="/models/frontboard/left">
                       <p>
