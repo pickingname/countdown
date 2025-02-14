@@ -60,10 +60,12 @@ export default function Navbar() {
     >
       <div className="flex items-center space-x-4">
         <span className="text-lg flex items-center leading-none mb-0.5">
-          <span className="mr-2 text-yellow-400">🔥</span> 157
+          <Link href={"/"}>
+            <span className="mr-2 text-yellow-400">🔥</span> 157
+          </Link>
         </span>
         <span className="text-sm font-medium leading-none pb-[1px]">
-          Archival
+          <Link href={"/"}>Archival</Link>
         </span>
       </div>
 
