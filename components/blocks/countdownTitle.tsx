@@ -11,10 +11,6 @@ interface TimeBoxProps {
 }
 
 const TimeBox = ({ value, unit, useRoller = true }: TimeBoxProps) => {
-  const formatUnit = (value: number, unit: string) => {
-    return `${unit}${value === 1 ? "" : "s"}`;
-  };
-
   return (
     <div className="flex items-center gap-2 -mx-1">
       <div className="w-[80px] h-[80px] bg-neutral-800 rounded-lg flex items-center justify-center">

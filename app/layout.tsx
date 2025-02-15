@@ -31,7 +31,7 @@ export default function RootLayout({
           <SpeedInsights />
           <Analytics />
           <Nav />
-          {children}
+          <div className="pt-14">{children}</div>
         </ThemeProvider>
       </body>
     </html>
