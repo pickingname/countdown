@@ -7,6 +7,9 @@ import {
   OrbitControls,
   Html,
   useProgress,
+  AdaptiveEvents,
+  Stars,
+  Sky,
 } from "@react-three/drei";
 import { Suspense } from "react";
 import { useErrorBoundary } from "use-error-boundary";
@@ -61,6 +64,22 @@ export default function Backboard({ modelUrl }: BackboardProps) {
           className="rounded-md border border-neutral-700"
         >
           <Suspense fallback={<LoadingSpinner />}>
+            <AdaptiveEvents />
+            <Stars
+              radius={100}
+              depth={50}
+              count={5000}
+              factor={4}
+              saturation={0}
+              fade
+              speed={1}
+            />
+            <Sky
+              distance={450000}
+              sunPosition={[0, 1, 0]}
+              inclination={0}
+              azimuth={0.25}
+            />
             <Model url={modelUrl} />
             <Environment preset="warehouse" />
             <OrbitControls />

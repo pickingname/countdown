@@ -79,6 +79,12 @@ export default function Page() {
               </Folder>
             </Tree>
           </div>
+
+          <p className="text-center text-sm text-neutral-500">
+            3D models recorded on an iPhone can vary in quality. The models are
+            provided as is, without any guarantees or warranties. Please use
+            them responsibly.
+          </p>
         </div>
       </div>
     </main>

@@ -35,7 +35,11 @@ export default function ToM3() {
 
   return (
     <div className="flex flex-col gap-2 items-center">
-      <Progress value={displayPercentage} className="h-3" />
+      <Progress
+        value={displayPercentage}
+        className="h-3"
+        aria-label="progress bar from m1 to m3"
+      />
       <div className="flex justify-between text-sm w-full">
         <p>M1</p>
         <p>{displayPercentage.toFixed(2)}%</p>
