@@ -1,7 +1,7 @@
 "use client";
 
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
-import { FileIcon, FolderIcon, FolderOpenIcon } from "lucide-react";
+import { FileBox, FolderIcon, FolderOpenIcon } from "lucide-react";
 import React, {
   createContext,
   forwardRef,
@@ -325,7 +325,7 @@ const File = forwardRef<
         onClick={() => selectItem(value)}
         {...props}
       >
-        {fileIcon ?? <FileIcon className="size-4" />}
+        {fileIcon ?? <FileBox className="size-4" />}
         {children}
       </button>
     );
