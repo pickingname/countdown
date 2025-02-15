@@ -7,7 +7,7 @@ import LiveBadge from "@/components/ui/liveBadge";
 
 export default function Home() {
   return (
-    <main className="max-w-3xl mx-auto flex flex-col px-3 pt-3 pb-8">
+    <main className="max-w-3xl mx-auto flex flex-col pt-3 pb-8">
       <div className="">
         <div className="p-5 rounded">
           <p className="text-center text-3xl pb-3">you have approximately</p>

@@ -11,12 +11,8 @@ interface TimeBoxProps {
 }
 
 const TimeBox = ({ value, unit, useRoller = true }: TimeBoxProps) => {
-  const formatUnit = (value: number, unit: string) => {
-    return `${unit}${value === 1 ? "" : "s"}`;
-  };
-
   return (
-    <div className="flex items-center gap-2 mx-2">
+    <div className="flex items-center gap-2 -mx-1">
       <div className="w-[80px] h-[80px] bg-neutral-800 rounded-lg flex items-center justify-center">
         {useRoller ? (
           <Roller
@@ -39,7 +35,10 @@ const TimeBox = ({ value, unit, useRoller = true }: TimeBoxProps) => {
           />
         )}
       </div>
-      <span className="text-xl">{formatUnit(value, unit)}</span>
+      <div className="text-xl w-[70px]">
+        <span>{unit}</span>
+        <span className="absolute">{value === 1 ? "" : "s"}</span>
+      </div>
     </div>
   );
 };
@@ -79,7 +78,7 @@ export default function CountdownTitle() {
   return (
     <div>
       <NumberFlowGroup>
-        <div className="flex items-center justify-center md:px-0">
+        <div className="flex items-center justify-center">
           <div className="flex flex-col md:flex-row justify-center gap-6 w-full md:w-auto">
             <div className="flex justify-center gap-6">
               <TimeBox value={timeLeft.days} unit="Day" />
