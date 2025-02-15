@@ -35,7 +35,11 @@ export default function M3Shalf() {
 
   return (
     <div className="flex flex-col gap-2 items-center">
-      <Progress value={displayPercentage} className="h-3" />
+      <Progress
+        value={displayPercentage}
+        className="h-3"
+        aria-label="progress bar from 2nd term of m3 to the end of m3"
+      />
       <div className="flex justify-between text-sm w-full">
         <p>28 Oct 2024</p>
         <p>{displayPercentage.toFixed(2)}%</p>
