@@ -2,7 +2,8 @@
 
 import Backboard from "@/components/ui/backboard";
 import { Button } from "@/components/ui/button";
-import React, { useRef } from "react";
+import Link from "next/link";
+import { useRef } from "react";
 
 export default function Page() {
   const modelRef = useRef<HTMLDivElement>(null);
@@ -38,7 +39,12 @@ export default function Page() {
             <span className="underline">pinch and drag to pan</span>. Happy
             exploring!
           </p>
-          <Button onClick={scrollToModel}>Click here to jump to model</Button>
+          <div className="flex space-x-2">
+            <Button onClick={scrollToModel}>Click here to jump to model</Button>
+            <Link href="/models">
+              <Button>Go back</Button>
+            </Link>
+          </div>
         </div>
         <div ref={modelRef}>
           <Backboard modelUrl="https://3jcyw639he.ufs.sh/f/Ij2Ry4WvTSFuaP2t1acjI7NhWc3w4F2VRZl9KJLxE0nfYAze" />
