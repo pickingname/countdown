@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 
 interface ImageWithPosition {
   image: HTMLImageElement;
@@ -9,12 +9,35 @@ interface ImageWithPosition {
 }
 
 const ImageCanvas = () => {
-  const canvasRef = useRef(null);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [imagePositions, setImagePositions] = useState<ImageWithPosition[]>([]);
   const [scale, setScale] = useState(1);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+
+  const drawImages = useCallback(
+    (positions: ImageWithPosition[]) => {
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      ctx.save();
+      ctx.translate(offset.x, offset.y);
+      ctx.scale(scale, scale);
+
+      positions.forEach(({ image, x, y }) => {
+        ctx.drawImage(image, x, y, image.width, image.height);
+      });
+
+      ctx.restore();
+    },
+    [offset, scale]
+  );
 
   useEffect(() => {
     const loadImages = async () => {
@@ -33,7 +56,6 @@ const ImageCanvas = () => {
         })
       );
 
-      // Generate positions once when images are loaded
       const positions = loadedImages.map((img) => ({
         image: img,
         x: Math.random() * (800 - img.width),
@@ -45,30 +67,17 @@ const ImageCanvas = () => {
     };
 
     loadImages();
-  }, []);
+  }, [drawImages]);
 
-  const drawImages = (positions: ImageWithPosition[]) => {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d");
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    ctx.save();
-    ctx.translate(offset.x, offset.y);
-    ctx.scale(scale, scale);
-
-    positions.forEach(({ image, x, y }) => {
-      ctx.drawImage(image, x, y, image.width, image.height);
-    });
-
-    ctx.restore();
-  };
-
-  const handleWheel = (e: React.WheelEvent) => {
+  const handleWheel = (e: React.WheelEvent<HTMLCanvasElement>) => {
     e.preventDefault();
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
     const delta = -e.deltaY;
     const zoomFactor = delta > 0 ? 1.1 : 0.9;
 
-    const rect = canvasRef.current.getBoundingClientRect();
+    const rect = canvas.getBoundingClientRect();
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
 
@@ -83,7 +92,7 @@ const ImageCanvas = () => {
     drawImages(imagePositions);
   };
 
-  const handleMouseDown = (e: React.MouseEvent) => {
+  const handleMouseDown = (e: React.MouseEvent<HTMLCanvasElement>) => {
     setIsDragging(true);
     setDragStart({
       x: e.clientX - offset.x,
@@ -91,7 +100,7 @@ const ImageCanvas = () => {
     });
   };
 
-  const handleMouseMove = (e: React.MouseEvent) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLCanvasElement>) => {
     if (!isDragging) return;
 
     const newOffset = {
