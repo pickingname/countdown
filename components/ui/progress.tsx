@@ -16,10 +16,12 @@ const Progress = React.forwardRef<
       className
     )}
     {...props}
+    aria-label="a progress bar"
   >
     <ProgressPrimitive.Indicator
       className="h-full w-full flex-1 bg-primary transition-all duration-500 ease-in-out rounded-full"
       style={{ transform: `translateX(-${100 - (value || 0)}%)` }}
+      aria-label="a progress bar"
     />
   </ProgressPrimitive.Root>
 ));
