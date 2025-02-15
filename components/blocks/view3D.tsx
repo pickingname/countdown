@@ -45,7 +45,7 @@ export default function View3D({ name, modelURL }: View3DProps) {
             exploring!
           </p>
           <div className="flex space-x-2">
-            <Button onClick={scrollToModel}>Click here to jump to model</Button>
+            <Button onClick={scrollToModel}>Jump to model</Button>
             <Link href="/models">
               <Button>Go back</Button>
             </Link>
