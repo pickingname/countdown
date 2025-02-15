@@ -116,7 +116,7 @@ export default function Navbar() {
             : "hidden"
         }`}
       >
-        <DropdownMenu modal={false}>
+        <DropdownMenu modal={false} aria-label="progress bar from m1 to m3">
           <DropdownMenuTrigger className="flex items-center justify-center h-8 w-8 text-neutral-300 hover:bg-neutral-800 rounded-lg">
             <Menu size={20} />
           </DropdownMenuTrigger>
