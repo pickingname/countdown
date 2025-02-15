@@ -94,9 +94,9 @@ export default function Navbar() {
             <span className="leading-none">3D Models</span>
           </button>
         </Link>
-        <button className="flex items-center justify-center h-8 px-3 text-xs font-medium text-neutral-900 bg-yellow-200 rounded-lg hover:bg-yellow-400 transition-colors ease-in-out duration-150">
+        {/* <button className="flex items-center justify-center h-8 px-3 text-xs font-medium text-neutral-900 bg-yellow-200 rounded-lg hover:bg-yellow-400 transition-colors ease-in-out duration-150">
           <span className="leading-none">Board</span>
-        </button>
+        </button> */}
       </div>
 
       {/* small ass UI */}
