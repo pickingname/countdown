@@ -79,16 +79,12 @@ export default function Navbar({ textColor }: NavbarProps) {
           isMobileScreen ? "hidden" : "flex"
         } items-center space-x-2`}
       >
-        <Link
-          href={"https://www.instagram.com/ps.onefiveseven"}
-          target="_blank"
-        >
+        <Link href={"/board"} target="_top">
           <button
             className="flex items-center justify-center gap-1 h-8 px-3 text-xs font-medium text-neutral-300 bg-neutral-800 rounded-lg hover:bg-neutral-700 border-neutral-700 border transition-colors ease-in-out duration-150"
             aria-label="IG link of the class of 157"
           >
-            <Instagram size={17} />
-            <span className="leading-none">157 IG</span>
+            <span className="leading-none">Board</span>
           </button>
         </Link>
         <Link href={"/"}>
@@ -136,22 +132,14 @@ export default function Navbar({ textColor }: NavbarProps) {
               Where to go?
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <Link
-              href={
-                "https://www.instagram.com/ps.onefiveseven?igsh=aDFjbGk4YnM4bHZz"
-              }
-              target="_blank"
-            >
-              <DropdownMenuItem>157 IG</DropdownMenuItem>
+            <Link href={"/board"} target="_top">
+              <DropdownMenuItem>Board</DropdownMenuItem>
             </Link>
             <Link href={"/"}>
               <DropdownMenuItem>Countdown</DropdownMenuItem>
             </Link>
             <Link href={"/models"}>
               <DropdownMenuItem>3D Models</DropdownMenuItem>
-            </Link>
-            <Link href={""}>
-              <DropdownMenuItem>Board</DropdownMenuItem>
             </Link>
           </DropdownMenuContent>
         </DropdownMenu>
