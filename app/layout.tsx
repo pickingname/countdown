@@ -4,7 +4,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
-import Nav from "@/components/ui/nav";
+import NavbarGenerator from "@/components/blocks/navbarGenerator";
 
 const currentFont = Outfit({ subsets: ["latin"] });
 export const metadata: Metadata = {
@@ -30,7 +30,7 @@ export default function RootLayout({
         >
           <SpeedInsights />
           <Analytics />
-          <Nav />
+          <NavbarGenerator />
           <div className="pt-14">{children}</div>
         </ThemeProvider>
       </body>
