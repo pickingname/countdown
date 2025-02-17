@@ -9,7 +9,7 @@ export default function NavbarGenerator() {
   return (
     <>
       {pathname === "/board" ? (
-        <Navbar textColor="black" />
+        <Navbar textColor="black" selfDestruct />
       ) : (
         <Navbar textColor="white" />
       )}

@@ -1,3 +1,5 @@
+import SPECIALFUCKINGNAVBAR from "@/components/blocks/SPECIALFUCKINGNAVBAR";
+
 export default function Page() {
   return (
     <div
@@ -10,6 +12,7 @@ export default function Page() {
         backgroundColor: "#FAFBFD",
       }}
     >
+      <SPECIALFUCKINGNAVBAR />
       <iframe
         style={{
           width: "100%",
