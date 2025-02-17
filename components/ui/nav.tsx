@@ -12,7 +12,11 @@ import { Instagram, Menu } from "lucide-react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
-export default function Navbar() {
+interface NavbarProps {
+  textColor: string;
+}
+
+export default function Navbar({ textColor }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   const [isMobileScreen, setIsMobileScreen] = useState(false);
@@ -59,12 +63,16 @@ export default function Navbar() {
       `}
     >
       <div className="flex items-center space-x-4">
-        <span className="text-lg flex items-center leading-none mb-0.5">
+        <span
+          className={`text-lg flex items-center leading-none mb-0.5 ${textColor}`}
+        >
           <Link href={"/"}>
             <span className="mr-2 text-yellow-400">🔥</span> 157
           </Link>
         </span>
-        <span className="text-sm font-medium leading-none pb-[1px]">
+        <span
+          className={`text-sm font-medium leading-none pb-[1px] ${textColor}`}
+        >
           <Link href={"/"}>Archival</Link>
         </span>
       </div>
