@@ -50,7 +50,7 @@ export default function Navbar({ textColor }: NavbarProps) {
       className={`
         fixed z-50 
         border-neutral-700 border flex items-center justify-between 
-        h-14 px-6 backdrop-blur-md text-white rounded-2xl 
+        h-14 px-6 backdrop-blur-md text-${textColor} rounded-2xl 
         shadow-lg mx-auto mt-4 
         ${isSmallScreen ? "left-4 right-4" : "left-0 right-0"}
         ${
@@ -63,16 +63,12 @@ export default function Navbar({ textColor }: NavbarProps) {
       `}
     >
       <div className="flex items-center space-x-4">
-        <span
-          className={`text-lg flex items-center leading-none mb-0.5 ${textColor}`}
-        >
+        <span className="text-lg flex items-center leading-none mb-0.5">
           <Link href={"/"}>
             <span className="mr-2 text-yellow-400">🔥</span> 157
           </Link>
         </span>
-        <span
-          className={`text-sm font-medium leading-none pb-[1px] ${textColor}`}
-        >
+        <span className="text-sm font-medium leading-none pb-[1px]">
           <Link href={"/"}>Archival</Link>
         </span>
       </div>
