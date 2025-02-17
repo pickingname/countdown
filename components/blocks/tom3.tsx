@@ -9,7 +9,7 @@ export default function ToM3() {
 
   useEffect(() => {
     const startDate = new Date("2022-05-25").getTime();
-    const endDate = new Date("2025-02-20T08:30:00Z").getTime();
+    const endDate = new Date("2025-02-20T06:40:00Z").getTime();
     const totalDuration = endDate - startDate;
 
     const calculateProgress = () => {

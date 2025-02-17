@@ -9,7 +9,7 @@ export default function M3Shalf() {
 
   useEffect(() => {
     const startDate = new Date("2024-10-28").getTime();
-    const endDate = new Date("2025-02-20T08:30:00Z").getTime();
+    const endDate = new Date("2025-02-20T06:40:00Z").getTime();
     const totalDuration = endDate - startDate;
 
     const calculateProgress = () => {

@@ -41,7 +41,10 @@ export default function View3D({ name, modelURL }: View3DProps) {
                 <TooltipProvider delayDuration={100}>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <Link href={"/models"}>
+                      <Link
+                        href={"/models"}
+                        aria-label="Go back to models page"
+                      >
                         <Button
                           variant="outline"
                           size="icon"
@@ -60,7 +63,10 @@ export default function View3D({ name, modelURL }: View3DProps) {
                 <TooltipProvider delayDuration={100}>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <Link href={modelURL}>
+                      <Link
+                        href={modelURL}
+                        aria-label="Download the current 3D file"
+                      >
                         <Button
                           variant="outline"
                           size="icon"

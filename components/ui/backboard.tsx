@@ -59,7 +59,7 @@ export default function Backboard({ modelUrl }: BackboardProps) {
     <div className="w-content h-[500px] pt-5">
       <ErrorBoundary>
         <Canvas
-          camera={{ position: [0, 0, 5], fov: 60 }}
+          camera={{ position: [0, 0, 5], fov: 30 }}
           style={{ background: "#000000" }}
           className="rounded-md border border-neutral-700"
         >

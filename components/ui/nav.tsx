@@ -8,11 +8,15 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Instagram, Menu } from "lucide-react";
+import { Menu } from "lucide-react";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
-export default function Navbar() {
+interface NavbarProps {
+  textColor: string;
+}
+
+export default function Navbar({ textColor }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   const [isMobileScreen, setIsMobileScreen] = useState(false);
@@ -46,7 +50,7 @@ export default function Navbar() {
       className={`
         fixed z-50 
         border-neutral-700 border flex items-center justify-between 
-        h-14 px-6 backdrop-blur-md text-white rounded-2xl 
+        h-14 px-6 backdrop-blur-md text-${textColor} rounded-2xl 
         shadow-lg mx-auto mt-4 
         ${isSmallScreen ? "left-4 right-4" : "left-0 right-0"}
         ${
@@ -75,19 +79,7 @@ export default function Navbar() {
           isMobileScreen ? "hidden" : "flex"
         } items-center space-x-2`}
       >
-        <Link
-          href={"https://www.instagram.com/ps.onefiveseven"}
-          target="_blank"
-        >
-          <button
-            className="flex items-center justify-center gap-1 h-8 px-3 text-xs font-medium text-neutral-300 bg-neutral-800 rounded-lg hover:bg-neutral-700 border-neutral-700 border transition-colors ease-in-out duration-150"
-            aria-label="IG link of the class of 157"
-          >
-            <Instagram size={17} />
-            <span className="leading-none">157 IG</span>
-          </button>
-        </Link>
-        <Link href={"/"}>
+        <Link href={"/"} aria-label="google">
           <button
             className="flex items-center justify-center h-8 px-3 text-xs font-medium text-neutral-300 bg-neutral-800 rounded-lg hover:bg-neutral-700 border-neutral-700 border transition-colors ease-in-out duration-150"
             aria-label="link to the countdown page"
@@ -95,7 +87,7 @@ export default function Navbar() {
             <span className="leading-none">Countdown</span>
           </button>
         </Link>
-        <Link href={"/models"}>
+        <Link href={"/models"} aria-label="google">
           <button
             className="flex items-center justify-center h-8 px-3 text-xs font-medium text-neutral-300 bg-neutral-800 rounded-lg hover:bg-neutral-700 border-neutral-700 border transition-colors ease-in-out duration-150"
             aria-label="link to the models page"
@@ -103,9 +95,14 @@ export default function Navbar() {
             <span className="leading-none">3D Models</span>
           </button>
         </Link>
-        {/* <button className="flex items-center justify-center h-8 px-3 text-xs font-medium text-neutral-900 bg-yellow-200 rounded-lg hover:bg-yellow-400 transition-colors ease-in-out duration-150">
-          <span className="leading-none">Board</span>
-        </button> */}
+        <Link href={"/board"} target="_top" aria-label="google">
+          <button
+            className="flex items-center justify-center gap-1 h-8 px-3 text-xs font-medium text-neutral-300 bg-neutral-800 rounded-lg hover:bg-neutral-700 border-neutral-700 border transition-colors ease-in-out duration-150"
+            aria-label="go to the board page"
+          >
+            <span className="leading-none">Board</span>
+          </button>
+        </Link>
       </div>
 
       {/* small ass UI */}
@@ -118,7 +115,7 @@ export default function Navbar() {
       >
         <DropdownMenu modal={false} aria-label="progress bar from m1 to m3">
           <DropdownMenuTrigger className="flex items-center justify-center h-8 w-8 text-neutral-300 hover:bg-neutral-800 rounded-lg">
-            <Menu size={20} />
+            <Menu size={20} className={`text-${textColor}`} />
           </DropdownMenuTrigger>
           <DropdownMenuContent
             align="end"
@@ -128,26 +125,24 @@ export default function Navbar() {
                 : "hidden"
             }`}
           >
-            <DropdownMenuLabel className="font-normal">
+            <DropdownMenuLabel className={`font-normal text-${textColor}`}>
               Where to go?
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <Link
-              href={
-                "https://www.instagram.com/ps.onefiveseven?igsh=aDFjbGk4YnM4bHZz"
-              }
-              target="_blank"
-            >
-              <DropdownMenuItem>157 IG</DropdownMenuItem>
+            <Link href={"/"} aria-label="google">
+              <DropdownMenuItem className={`text-${textColor}`}>
+                Countdown
+              </DropdownMenuItem>
             </Link>
-            <Link href={"/"}>
-              <DropdownMenuItem>Countdown</DropdownMenuItem>
+            <Link href={"/models"} aria-label="google">
+              <DropdownMenuItem className={`text-${textColor}`}>
+                3D Models
+              </DropdownMenuItem>
             </Link>
-            <Link href={"/models"}>
-              <DropdownMenuItem>3D Models</DropdownMenuItem>
-            </Link>
-            <Link href={""}>
-              <DropdownMenuItem>Board</DropdownMenuItem>
+            <Link href={"/board"} target="_top" aria-label="google">
+              <DropdownMenuItem className={`text-${textColor}`}>
+                Board
+              </DropdownMenuItem>
             </Link>
           </DropdownMenuContent>
         </DropdownMenu>
