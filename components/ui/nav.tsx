@@ -103,9 +103,6 @@ export default function Navbar({ textColor }: NavbarProps) {
             <span className="leading-none">3D Models</span>
           </button>
         </Link>
-        {/* <button className="flex items-center justify-center h-8 px-3 text-xs font-medium text-neutral-900 bg-yellow-200 rounded-lg hover:bg-yellow-400 transition-colors ease-in-out duration-150">
-          <span className="leading-none">Board</span>
-        </button> */}
       </div>
 
       {/* small ass UI */}
@@ -118,7 +115,7 @@ export default function Navbar({ textColor }: NavbarProps) {
       >
         <DropdownMenu modal={false} aria-label="progress bar from m1 to m3">
           <DropdownMenuTrigger className="flex items-center justify-center h-8 w-8 text-neutral-300 hover:bg-neutral-800 rounded-lg">
-            <Menu size={20} />
+            <Menu size={20} className={`text-${textColor}`} />
           </DropdownMenuTrigger>
           <DropdownMenuContent
             align="end"
@@ -128,18 +125,24 @@ export default function Navbar({ textColor }: NavbarProps) {
                 : "hidden"
             }`}
           >
-            <DropdownMenuLabel className="font-normal">
+            <DropdownMenuLabel className={`font-normal text-${textColor}`}>
               Where to go?
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <Link href={"/board"} target="_top" aria-label="google">
-              <DropdownMenuItem>Board</DropdownMenuItem>
+              <DropdownMenuItem className={`text-${textColor}`}>
+                Board
+              </DropdownMenuItem>
             </Link>
             <Link href={"/"} aria-label="google">
-              <DropdownMenuItem>Countdown</DropdownMenuItem>
+              <DropdownMenuItem className={`text-${textColor}`}>
+                Countdown
+              </DropdownMenuItem>
             </Link>
             <Link href={"/models"} aria-label="google">
-              <DropdownMenuItem>3D Models</DropdownMenuItem>
+              <DropdownMenuItem className={`text-${textColor}`}>
+                3D Models
+              </DropdownMenuItem>
             </Link>
           </DropdownMenuContent>
         </DropdownMenu>

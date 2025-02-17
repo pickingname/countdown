@@ -7,6 +7,7 @@ export default function Page() {
         position: "fixed",
         top: 0,
         left: 0,
+        backgroundColor: "#FAFBFD",
       }}
     >
       <iframe
