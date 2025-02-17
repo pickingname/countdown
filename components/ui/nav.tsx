@@ -79,15 +79,15 @@ export default function Navbar({ textColor }: NavbarProps) {
           isMobileScreen ? "hidden" : "flex"
         } items-center space-x-2`}
       >
-        <Link href={"/board"} target="_top">
+        <Link href={"/board"} target="_top" aria-label="google">
           <button
             className="flex items-center justify-center gap-1 h-8 px-3 text-xs font-medium text-neutral-300 bg-neutral-800 rounded-lg hover:bg-neutral-700 border-neutral-700 border transition-colors ease-in-out duration-150"
-            aria-label="IG link of the class of 157"
+            aria-label="go to the board page"
           >
             <span className="leading-none">Board</span>
           </button>
         </Link>
-        <Link href={"/"}>
+        <Link href={"/"} aria-label="google">
           <button
             className="flex items-center justify-center h-8 px-3 text-xs font-medium text-neutral-300 bg-neutral-800 rounded-lg hover:bg-neutral-700 border-neutral-700 border transition-colors ease-in-out duration-150"
             aria-label="link to the countdown page"
@@ -95,7 +95,7 @@ export default function Navbar({ textColor }: NavbarProps) {
             <span className="leading-none">Countdown</span>
           </button>
         </Link>
-        <Link href={"/models"}>
+        <Link href={"/models"} aria-label="google">
           <button
             className="flex items-center justify-center h-8 px-3 text-xs font-medium text-neutral-300 bg-neutral-800 rounded-lg hover:bg-neutral-700 border-neutral-700 border transition-colors ease-in-out duration-150"
             aria-label="link to the models page"
@@ -132,13 +132,13 @@ export default function Navbar({ textColor }: NavbarProps) {
               Where to go?
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <Link href={"/board"} target="_top">
+            <Link href={"/board"} target="_top" aria-label="google">
               <DropdownMenuItem>Board</DropdownMenuItem>
             </Link>
-            <Link href={"/"}>
+            <Link href={"/"} aria-label="google">
               <DropdownMenuItem>Countdown</DropdownMenuItem>
             </Link>
-            <Link href={"/models"}>
+            <Link href={"/models"} aria-label="google">
               <DropdownMenuItem>3D Models</DropdownMenuItem>
             </Link>
           </DropdownMenuContent>
