@@ -79,14 +79,6 @@ export default function Navbar({ textColor }: NavbarProps) {
           isMobileScreen ? "hidden" : "flex"
         } items-center space-x-2`}
       >
-        <Link href={"/board"} target="_top" aria-label="google">
-          <button
-            className="flex items-center justify-center gap-1 h-8 px-3 text-xs font-medium text-neutral-300 bg-neutral-800 rounded-lg hover:bg-neutral-700 border-neutral-700 border transition-colors ease-in-out duration-150"
-            aria-label="go to the board page"
-          >
-            <span className="leading-none">Board</span>
-          </button>
-        </Link>
         <Link href={"/"} aria-label="google">
           <button
             className="flex items-center justify-center h-8 px-3 text-xs font-medium text-neutral-300 bg-neutral-800 rounded-lg hover:bg-neutral-700 border-neutral-700 border transition-colors ease-in-out duration-150"
@@ -101,6 +93,14 @@ export default function Navbar({ textColor }: NavbarProps) {
             aria-label="link to the models page"
           >
             <span className="leading-none">3D Models</span>
+          </button>
+        </Link>
+        <Link href={"/board"} target="_top" aria-label="google">
+          <button
+            className="flex items-center justify-center gap-1 h-8 px-3 text-xs font-medium text-neutral-300 bg-neutral-800 rounded-lg hover:bg-neutral-700 border-neutral-700 border transition-colors ease-in-out duration-150"
+            aria-label="go to the board page"
+          >
+            <span className="leading-none">Board</span>
           </button>
         </Link>
       </div>
@@ -129,11 +129,6 @@ export default function Navbar({ textColor }: NavbarProps) {
               Where to go?
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <Link href={"/board"} target="_top" aria-label="google">
-              <DropdownMenuItem className={`text-${textColor}`}>
-                Board
-              </DropdownMenuItem>
-            </Link>
             <Link href={"/"} aria-label="google">
               <DropdownMenuItem className={`text-${textColor}`}>
                 Countdown
@@ -142,6 +137,11 @@ export default function Navbar({ textColor }: NavbarProps) {
             <Link href={"/models"} aria-label="google">
               <DropdownMenuItem className={`text-${textColor}`}>
                 3D Models
+              </DropdownMenuItem>
+            </Link>
+            <Link href={"/board"} target="_top" aria-label="google">
+              <DropdownMenuItem className={`text-${textColor}`}>
+                Board
               </DropdownMenuItem>
             </Link>
           </DropdownMenuContent>
