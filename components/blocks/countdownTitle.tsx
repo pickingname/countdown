@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import NumberFlow, { NumberFlowGroup } from "@number-flow/react";
 import { Roller } from "@fecapark/number-rolling";
+import confetti from "canvas-confetti";
 
 interface TimeBoxProps {
   value: number;
@@ -51,6 +52,8 @@ export default function CountdownTitle() {
     seconds: 0,
   });
 
+  const fireworksTriggered = useRef(false);
+
   useEffect(() => {
     // Create target date at 14:40 GMT+8
     const targetDate = new Date("2025-02-20T06:40:00Z");
@@ -66,7 +69,48 @@ export default function CountdownTitle() {
           minutes: Math.floor((difference / 1000 / 60) % 60),
           seconds: Math.floor((difference / 1000) % 60),
         });
+      } else if (!fireworksTriggered.current) {
+        triggerFireworks();
+        fireworksTriggered.current = true;
       }
+    };
+
+    const triggerFireworks = () => {
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
+      });
+
+      setTimeout(() => {
+        const end = Date.now() + 3 * 1000;
+        const colors = ["#a786ff", "#fd8bbc", "#eca184", "#f8deb1"];
+
+        const frame = () => {
+          if (Date.now() > end) return;
+
+          confetti({
+            particleCount: 2,
+            angle: 60,
+            spread: 55,
+            startVelocity: 60,
+            origin: { x: 0, y: 0.5 },
+            colors: colors,
+          });
+          confetti({
+            particleCount: 2,
+            angle: 120,
+            spread: 55,
+            startVelocity: 60,
+            origin: { x: 1, y: 0.5 },
+            colors: colors,
+          });
+
+          requestAnimationFrame(frame);
+        };
+
+        frame();
+      }, 2000);
     };
 
     const timer = setInterval(calculateTimeLeft, 1000);
