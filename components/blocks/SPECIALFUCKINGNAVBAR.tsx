@@ -65,7 +65,7 @@ export default function SPECIALFUCKINGNAVBAR() {
           </Link>
         </span>
         <span className="text-sm font-medium leading-none pb-[1px]">
-          <Link href={"/"}>Archival</Link>
+          <Link href={"/"}>The Board</Link>
         </span>
       </div>
 
