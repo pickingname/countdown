@@ -21,7 +21,7 @@ export default function Page() {
           top: 0,
           left: 0,
         }}
-        src="https://embed.figma.com/design/3gVOKUq04oImJQsaGOqvau/temporary?node-id=0-1&embed-host=share"
+        src="https://embed.figma.com/design/rvYxDRBkQsmXh0FcMQggYV/157--Copy-?node-id=0-1&embed-host=share"
         allowFullScreen
       ></iframe>
     </div>
